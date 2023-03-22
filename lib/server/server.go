@@ -10,7 +10,7 @@ import (
 )
 
 var (
-	animal string = "cat"
+	animal string = "gato"
 )
 
 func HealthResponse(w http.ResponseWriter, r *http.Request) {
