@@ -4,11 +4,17 @@ Aplicación para ser utilizada en los yml de k8s de esta práctica.
 
 # Descripción
 
-Este proyecto crea una imagen de docker con dos aplicaciones: cliente y servidor. Por defecto se lanza la aplicación `server`. Es necesario sobreescribir el entrypoint con `client` para que lance la aplicación cliente.
+Este proyecto crea una imagen de docker con cinco aplicaciones: character, cliente, servidor, files y namespace. Por defecto se lanza la aplicación `server`. Es necesario sobreescribir el entrypoint con `character`, `client`, `files`, `namespace` para lanzar el resto de aplicaciones.
+
+`character`: La aplicación character lanza una aplicación que escribe cada segundo por consola `érase una vez ...` Las variables de entorno CHARACTER y SLEEP_TIME pueden ser sobreescritas.
 
 `server`: La aplicación server lanza un servidor web que escucha peticiones http en el puerto 8000 y expone dos endpoints, `/health` y `/echo`. El endpoint `/health` devuelve un json con el estado de la aplicación, mientras que el endpoint `/echo` devuelve un un json con el hostname de la máquina y el mensaje 'Esto es un gato'. El animal puede ser sobreescrito con la variable de entorno ANIMAL.
 
 `client`: La aplicación cliente lanza un cliente web que hace peticiones http al servidor web. El cliente se puede configurar con las siguientes variables de entorno: SLEEP_TIME - Tiempo de espera entre peticiones, SERVER_URL - Dirección y puerto del servidor (http://localhost:8000), ENDPOINT - Endpoint del servidor.
+
+`files`: La aplicación files escribe en la ruta `/svr/files` un fichero con el hostname y la hora como nombre, y escribe por consola el hostname y el número total de ficheros en la carpeta. La variable de entorno SLEEP_TIME se puede sobreescribir.
+
+`namespace`: La aplicación namespace escribe por consola cada 5 segundos el número de pods que se están ejecutando en el namespace `default`. Las variables NAMESPACE y SLEEP_TIME se pueden sobreescribir.
 
 # Descripción detallada del servidor
 
