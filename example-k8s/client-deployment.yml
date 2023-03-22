@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-k8s-client
+  labels:
+    app: example-k8s-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: example-k8s-client
+  template:
+    metadata:
+      labels:
+        app: example-k8s-client
+    spec:
+      containers:
+        - name: example-k8s-client
+          image: ghcr.io/aestebance/practica-go-kubernetes:v1.0.3
+          command:
+            - client
+          env:
+            - name: SERVER_URL
+              value: http://example-k8s-service:8000
+            - name: ENDPOINT
+              value: /echo

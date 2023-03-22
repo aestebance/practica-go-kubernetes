@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: example-k8s-server
+  labels:
+    app: example-k8s-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: example-k8s-server
+  template:
+    metadata:
+      labels:
+        app: example-k8s-server
+    spec:
+      containers:
+      - name: example-k8s-server
+        image: ghcr.io/aestebance/practica-go-kubernetes:v1.0.3
+        command:
+          - server
