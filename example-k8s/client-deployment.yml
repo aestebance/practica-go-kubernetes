@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: example-k8s-client
-          image: ghcr.io/aestebance/practica-go-kubernetes:v1.0.4
+          image: ghcr.io/aestebance/practica-go-kubernetes:v1.0.5
           command:
             - client
           env:
