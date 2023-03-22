@@ -24,4 +24,4 @@ COPY --from=builder /go/bin/client ./usr/local/bin/client
 
 USER aestebance
 
-ENTRYPOINT["server"]
+ENTRYPOINT ["server"]
