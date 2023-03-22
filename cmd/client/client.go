@@ -31,7 +31,7 @@ func main() {
 		accessPoint := fmt.Sprint(serverURL, endpoint)
 		r, err := setupClient.Get(accessPoint)
 		if err != nil {
-			log.Fatal(err)
+			log.Panicln(err.Error())
 		}
 
 		defer func(Body io.ReadCloser) {
@@ -42,7 +42,7 @@ func main() {
 		}(r.Body)
 		body, err := io.ReadAll(r.Body)
 		if err != nil {
-			log.Fatal(err)
+			log.Panicln(err.Error())
 		}
 
 		fmt.Printf("%s\n", body)
