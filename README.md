@@ -84,3 +84,63 @@ docker container logs client
   "message": "Esto es un gato"
 }
 ```
+
+# Ejecución en k8s
+
+Para ejecutar la aplicación en k8s, primero debe crear el deployment y el service. Para ello, ejecute el siguiente comando:
+
+```bash
+kubectl apply -f example-k8s/
+```
+
+```bash
+kubectl get all -l app=example-k8s-service
+
+NAME                          TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
+service/example-k8s-service   ClusterIP   10.96.60.0   <none>        8000/TCP   41s
+
+```
+
+```bash
+kubectl get all -l app=example-k8s-server
+
+NAME                                     READY   STATUS    RESTARTS   AGE
+pod/example-k8s-server-5c78f7ff9-qrpf7   1/1     Running   0          94s
+
+NAME                                 READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/example-k8s-server   1/1     1            1           94s
+
+NAME                                           DESIRED   CURRENT   READY   AGE
+replicaset.apps/example-k8s-server-5c78f7ff9   1         1         1       94s
+```
+
+```bash
+kubectl get all -l app=example-k8s-client
+
+NAME                                    READY   STATUS    RESTARTS       AGE
+pod/example-k8s-client-594c945f-fb57f   1/1     Running   1 (119s ago)   2m
+
+NAME                                 READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/example-k8s-client   1/1     1            1           2m
+
+NAME                                          DESIRED   CURRENT   READY   AGE
+replicaset.apps/example-k8s-client-594c945f   1         1         1       2m
+```
+
+```bash
+kubectl logs pod/example-k8s-client-594c945f-fb57f
+
+{
+  "hostname": "example-k8s-server-5c78f7ff9-qrpf7",
+  "message": "Esto es un gato"
+}
+{
+  "hostname": "example-k8s-server-5c78f7ff9-qrpf7",
+  "message": "Esto es un gato"
+}
+{
+  "hostname": "example-k8s-server-5c78f7ff9-qrpf7",
+  "message": "Esto es un gato"
+}
+...
+```
