@@ -150,3 +150,5 @@ kubectl logs pod/example-k8s-client-594c945f-fb57f
 }
 ...
 ```
+
+# La carpeta K8s contiene ejemplos de los distintos objetos de kubernetes.
