@@ -22,13 +22,11 @@ FROM alpine:3.17
 LABEL language="golang"
 LABEL org.opencontainers.image.source = https://github.com/aestebance/erase-una-vez-2
 COPY --from=builder /etc/passwd /etc/passwd
-COPY --from=builder /go/bin/character ./usr/local/bin/character
-COPY --from=builder /go/bin/server ./usr/local/bin/server
-COPY --from=builder /go/bin/client ./usr/local/bin/client
-COPY --from=builder /go/bin/files ./usr/local/bin/files
-COPY --from=builder /go/bin/namespace ./usr/local/bin/namespace
-
-WORKDIR /opt/app/
+COPY --from=builder /go/bin/character /usr/local/bin/character
+COPY --from=builder /go/bin/server /usr/local/bin/server
+COPY --from=builder /go/bin/client /usr/local/bin/client
+COPY --from=builder /go/bin/files /usr/local/bin/files
+COPY --from=builder /go/bin/namespace /usr/local/bin/namespace
 
 USER aestebance
 
