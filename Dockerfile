@@ -6,8 +6,7 @@ RUN adduser -D -g '' aestebance
 WORKDIR /opt/app/
 COPY go.mod go.sum ./
 # Fetch dependencies
-RUN go mod download
-RUN go mod verify
+RUN go mod download && go mod verify
 # Copy the source code
 COPY . .
 # Build the binary
