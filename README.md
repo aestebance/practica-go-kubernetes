@@ -12,7 +12,7 @@ Este proyecto crea una imagen de docker con cinco aplicaciones: character, clien
 
 `client`: La aplicación cliente lanza un cliente web que hace peticiones http al servidor web. El cliente se puede configurar con las siguientes variables de entorno: SLEEP_TIME - Tiempo de espera entre peticiones, SERVER_URL - Dirección y puerto del servidor (http://localhost:8000), ENDPOINT - Endpoint del servidor.
 
-`files`: La aplicación files escribe en la ruta `/svr/files` un fichero con el hostname y la hora como nombre, y escribe por consola el hostname y el número total de ficheros en la carpeta. La variable de entorno SLEEP_TIME se puede sobreescribir.
+`files`: La aplicación files escribe en la ruta `/svr` un fichero con el hostname y la hora como nombre, y escribe por consola el hostname y el número total de ficheros en la carpeta. La variable de entorno SLEEP_TIME se puede sobreescribir.
 
 `namespace`: La aplicación namespace escribe por consola cada 5 segundos el número de pods que se están ejecutando en el namespace `default`. Las variables NAMESPACE y SLEEP_TIME se pueden sobreescribir.
 
@@ -49,7 +49,7 @@ Para ejecutar la aplicación en docker, primero debe construir la imagen de dock
 # iniciar servidor
 docker container run --rm  --name server \
 --entrypoint server -p 8000:8000 --detach \
-ghcr.io/aestebance/practica-go-kubernetes:v1.0.6
+ghcr.io/aestebance/practica-go-kubernetes:v1.0.7
 ```
 
 ```bash
@@ -71,7 +71,7 @@ curl http://localhost:8000/health
 # iniciar el cliente
 docker container run --rm --name client \
 --entrypoint client -p 8000:8000 --detach \
-ghcr.io/aestebance/practica-go-kubernetes:v1.0.6
+ghcr.io/aestebance/practica-go-kubernetes:v1.0.7
 ```
 ```bash
 # obtener la ip interna del servidor

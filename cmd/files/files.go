@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	folderPath string = "/srv/files"
+	folderPath string = "/srv"
 	sleepTime  int    = 5
 )
 
