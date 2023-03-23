@@ -5,4 +5,4 @@ metadata:
 spec:
   containers:
     - name: example-k8s
-      image: ghcr.io/aestebance/practica-go-kubernetes:v1.0.6
+      image: ghcr.io/aestebance/practica-go-kubernetes:v1.0.7
