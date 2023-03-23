@@ -19,7 +19,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -a -installsuffix cgo -o 
 # Build a small image
 FROM alpine:3.17
 LABEL language="golang"
-LABEL org.opencontainers.image.source = https://github.com/aestebance/erase-una-vez-2
+LABEL org.opencontainers.image.source = https://github.com/aestebance/practica-go-kubernetes
 COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /go/bin/character /usr/local/bin/character
 COPY --from=builder /go/bin/server /usr/local/bin/server

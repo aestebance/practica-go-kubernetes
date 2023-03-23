@@ -49,7 +49,7 @@ Para ejecutar la aplicación en docker, primero debe construir la imagen de dock
 # iniciar servidor
 docker container run --rm  --name server \
 --entrypoint server -p 8000:8000 --detach \
-ghcr.io/aestebance/practica-go-kubernetes:v1.0.5
+ghcr.io/aestebance/practica-go-kubernetes:v1.0.6
 ```
 
 ```bash
@@ -71,7 +71,7 @@ curl http://localhost:8000/health
 # iniciar el cliente
 docker container run --rm --name client \
 --entrypoint client -p 8000:8000 --detach \
-ghcr.io/aestebance/practica-go-kubernetes:v1.0.5
+ghcr.io/aestebance/practica-go-kubernetes:v1.0.6
 ```
 ```bash
 # obtener la ip interna del servidor
