@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: deployment-02
+  labels:
+    app: deployment-02
+spec:
+  replicas: 7
+  selector:
+    matchLabels:
+      app: example-k8s-pod
+  strategy:
+    type: RollingUpdate
+    RollingUpdate:
+      maxSurge: 10%
+      maxUnavailable: 10%
+  template:
+    metadata:
+      labels:
+        app: example-k8s-pod
+        language: go
+    spec:
+      containers:
+        - name: example-k8s
+          image: ghcr.io/aestebance/practica-go-kubernetes:v1.0.4
+          env:
+            - name: ANIMAL
+              value: "perro"
